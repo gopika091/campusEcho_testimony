@@ -1,0 +1,11 @@
+# Node.js
+env/
+node_modules/
+.env
+npm-debug.log
+*.log
+build/
+dist/
+.vscode/
+uploads/
+vedio-testimonal-tool-461217-deea1e0fcb41.json
