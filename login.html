@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusEcho – Login</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Start Your Testimonial</h2>
+      <form id="userInfoForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email (optional)" />
+        <input
+          type="text"
+          id="role"
+          placeholder="Your Role (e.g., Student, Faculty)"
+          required
+        />
+        <button type="submit" class="btn btn-start">
+          Next: Start Recording
+        </button>
+      </form>
+      <p id="userInfoStatus"></p>
+    </div>
+    <footer>
+      <p>Designed and developed by Gopika. Copyright © 2025 GG</p>
+    </footer>
+    <script>
+      document.getElementById("userInfoForm").onsubmit = function (e) {
+        e.preventDefault();
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const role = document.getElementById("role").value.trim();
+        if (!name || !role) {
+          document.getElementById("userInfoStatus").textContent =
+            "Please enter your name and role.";
+          return;
+        }
+        try {
+          localStorage.setItem(
+            "campusEchoUser",
+            JSON.stringify({ name, email, role })
+          );
+        } catch (err) {
+          document.getElementById("userInfoStatus").textContent =
+            "Unable to save your info. Please check your browser settings.";
+          return;
+        }
+        window.location.href = "video-recorder.html";
+      };
+    </script>
+  </body>
+</html>
